@@ -4,8 +4,9 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Home from "./components/home/Home";
 import Announcements from "./components/announcements/Announcements";
 import AddAnnouncements from "./components/addAnnouncements/AddAnnouncements";
-import SearchAnnouncements from "./components/searchAnnouncements/searchAnnouncements";
-import DeleteAnnouncement from "./components/deleteAnnouncement/deleteAnnouncement";
+import SearchAnnouncements from "./components/searchAnnouncements/SearchAnnouncements";
+import DeleteAnnouncement from "./components/deleteAnnouncement/DeleteAnnouncement";
+import EditAnnouncement from "./components/editAnnouncement/EditAnnouncement";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
                 <Link to={'/add'}>add</Link>
                 <Link to={'/search'}>search</Link>
                 <Link to={'/remove'}>remove</Link>
+                <Link to={'/edit'}>edit</Link>
             </div>
 
             <hr/>
@@ -35,6 +37,9 @@ function App() {
                 </Route>
                 <Route path={'/remove'}>
                     <DeleteAnnouncement/>
+                </Route>
+                <Route path={'/edit'}>
+                    <EditAnnouncement/>
                 </Route>
             </Switch>
         </Router>
