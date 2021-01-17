@@ -10,7 +10,6 @@ export default  class Announcements extends Component {
 
     deleteReport(id) {
         this.setState({
-
             reports: this.state.reports.filter(report => report.id !== id)
         })
     }
@@ -20,7 +19,7 @@ export default  class Announcements extends Component {
         return (
             <div>
                 {
-                    this.state.reports.map(report => (<Announcement delete={this.deleteReport.bind(this, report.id)} report={report} key={report.id}/>))
+                    this.state.reports.map((value,index) => (<Announcement delete={this.deleteReport.bind(this, value.id)} report={value} key={index}/> ))
                 }
             </div>
         );

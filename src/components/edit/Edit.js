@@ -1,13 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Edit extends Component {
-    render() {
-        return (
-            <div>
-                <p>edit</p>
-            </div>
-        );
-    }
+export default function Edit(props) {
+    return (
+        <div>
+            edit
+        </div>
+    );
 }
 
-export default Edit;
+
+
+
+
+
+
+

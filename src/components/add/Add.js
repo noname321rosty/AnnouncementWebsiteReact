@@ -3,37 +3,15 @@ import {reports} from "../../database/database";
 
 
 class Add extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            title: this.props.report,
-            description: this.props.report,
-            reports
-        }
-
-
+    state = {
+        reports: [...reports]
     }
 
     add = () => {
-        const {title, description} = this.state;
-            const args = {title, description};
+       const newItem ='smt';
+       this.setState({reports: this.state.concat(newItem)})
 
-            console.log(this.state.reports.id);
-
-            if (args !== this.state.reports){
-                reports.push(title, description)
-            }
     }
-
-    onChangeTitle = (event) => {
-      this.setState(event.target.value);
-    };
-
-    onChangeDesc = (event) => {
-      this.setState(event.target.value);
-    };
 
     render() {
 
@@ -42,8 +20,8 @@ class Add extends Component {
 
                 <form onSubmit={this.add}>
                     <label>New Announcements</label><br/>
-                    <input type="text" placeholder='title' value={this.state.title} onChange={this.onChangeTitle}/><br/>
-                    <input type="text" placeholder='description' value={this.state.description} onChange={this.onChangeDesc} />
+                    {/*<input type="text" placeholder='title' value={this.state}/><br/>*/}
+                    {/*<input type="text" placeholder='description' value={this.state}/>*/}
                     <button type="submit">Create</button>
                 </form>
         );

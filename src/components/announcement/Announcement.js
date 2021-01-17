@@ -1,23 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {Link} from "react-router-dom";
 
-class Announcement extends Component {
-    render() {
-        let {id, title, description, date} = this.props.report;
-        let props = this.props;
-        return (
-            <div>
-                {
-                   <div key={id}> {id} - {title} - {description} - {date}
-                       <button onClick={props.delete}>remove</button>
-                   </div>
-
-                }
-            </div>
-        );
-    }
+export default function Announcement(props) {
+    return (
+        <div>
+            {
+                <div> {props.report.id} - {props.report.title} - {props.report.description} - {props.report.date}
+                    <button onClick={props.delete}>remove</button>
+                    <Link  to={`/edit`}>edit</Link>
+                </div>
+            }
+        </div>
+    );
 }
 
-export default Announcement;
 
 
 
