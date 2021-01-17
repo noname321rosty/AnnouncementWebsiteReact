@@ -7,7 +7,7 @@ export default function Announcement(props) {
             {
                 <div> {props.report.id} - {props.report.title} - {props.report.description} - {props.report.date}
                     <button onClick={props.delete}>remove</button>
-                    <Link  to={`/edit`}>edit</Link>
+                    {/*<Link  to={`/edit`}>edit</Link>*/}
                 </div>
             }
         </div>
