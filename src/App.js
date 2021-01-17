@@ -3,10 +3,9 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Home from "./components/home/Home";
 import Announcements from "./components/announcements/Announcements";
-import AddAnnouncements from "./components/addAnnouncements/AddAnnouncements";
-import SearchAnnouncements from "./components/searchAnnouncements/SearchAnnouncements";
-import DeleteAnnouncement from "./components/deleteAnnouncement/DeleteAnnouncement";
-import EditAnnouncement from "./components/editAnnouncement/EditAnnouncement";
+import Add from "./components/add/Add";
+import Search from "./components/search/Search";
+import Edit from "./components/edit/Edit";
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
                 <Link to={'/all'}>all</Link>
                 <Link to={'/add'}>add</Link>
                 <Link to={'/search'}>search</Link>
-                <Link to={'/remove'}>remove</Link>
                 <Link to={'/edit'}>edit</Link>
             </div>
 
@@ -30,16 +28,13 @@ function App() {
                     <Announcements/>
                 </Route>
                 <Route path={'/add'}>
-                    <AddAnnouncements/>
+                    <Add/>
                 </Route>
                 <Route path={'/search'}>
-                    <SearchAnnouncements/>
-                </Route>
-                <Route path={'/remove'}>
-                    <DeleteAnnouncement/>
+                    <Search/>
                 </Route>
                 <Route path={'/edit'}>
-                    <EditAnnouncement/>
+                    <Edit/>
                 </Route>
             </Switch>
         </Router>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {reports} from "../../database/database";
 
 
-class AddAnnouncements extends Component {
+class Add extends Component {
 
     constructor(props) {
         super(props);
@@ -50,7 +50,7 @@ class AddAnnouncements extends Component {
     }
 }
 
-export default AddAnnouncements;
+export default Add;
 
 
 
