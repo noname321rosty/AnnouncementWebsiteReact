@@ -38,7 +38,7 @@ export default  class Search extends Component {
                 <input value={this.state.title} onChange={this.checkTitle} type="text" placeholder={'search by title'}/>
                 <div>
                     {
-                        this.state.array.map(report => <Announcement report={report}/>)
+                        this.state.array.map((report , index) => <Announcement report={report} key={index}/>)
                     }
                 </div>
             </div>
