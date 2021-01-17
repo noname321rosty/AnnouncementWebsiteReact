@@ -19,7 +19,7 @@ export default  class Announcements extends Component {
         return (
             <div>
                 {
-                    this.state.reports.map((value,index) => (<Announcement delete={this.deleteReport.bind(this, value.id)} report={value} key={index}/> ))
+                    this.state.reports.map((report,index) => (<Announcement delete={this.deleteReport.bind(this, report.id)} report={report} key={index}/> ))
                 }
             </div>
         );

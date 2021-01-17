@@ -11,11 +11,10 @@ function App() {
   return (
     <div>
         <Router>
-            <div>
+            <div className={'wrap'}>
                 <Link to={'/home'}>home</Link>
                 <Link to={'/announcements'}>announcements</Link>
-                <Link to={'/add'}>add</Link>
-                <Search/>
+                <Link to={'/add'}>add</Link>    <Search/>
             </div>
 
             <hr/>

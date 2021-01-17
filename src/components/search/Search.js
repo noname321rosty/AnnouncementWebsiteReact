@@ -34,10 +34,11 @@ export default  class Search extends Component {
     render() {
         return (
             <div>
-                <input value={this.state.title} onChange={this.checkTitle} type="text"/>
+
+                <input value={this.state.title} onChange={this.checkTitle} type="text" placeholder={'search by title'}/>
                 <div>
                     {
-                        this.state.array.map(value => <Announcement value={value}/>)
+                        this.state.array.map(report => <Announcement report={report}/>)
                     }
                 </div>
             </div>
