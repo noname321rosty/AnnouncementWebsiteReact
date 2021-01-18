@@ -33,7 +33,7 @@ export default class Add extends Component {
         };
     }
 
-    status = reports
+    status = reports;
 
     handleSubmit = e => {
         e.preventDefault();
