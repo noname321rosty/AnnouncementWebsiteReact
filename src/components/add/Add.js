@@ -43,7 +43,7 @@ export default class Add extends Component {
             `);
 
             let newId = this.state.reports.length + 1;
-            console.log(newId)
+            // console.log(newId)
             this.state.array.push({id:newId,title: this.state.title,description: this.state.description, date: new Date().toLocaleString()});
 
 
