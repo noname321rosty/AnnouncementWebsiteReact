@@ -1,6 +1,4 @@
 import React from 'react';
-import {Link} from "react-router-dom";
-import {reports} from "../../database/database";
 
 export default function Announcement(props) {
     let {id, title, description, date} = props.report;

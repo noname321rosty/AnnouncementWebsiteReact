@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import Home from "./components/home/Home";
+import Task from "./components/task/Task";
 import Announcements from "./components/announcements/Announcements";
 import Add from "./components/add/Add";
 import Edit from "./components/edit/Edit";
@@ -12,21 +12,21 @@ function App() {
     <div>
         <Router>
             <div className={'wrap'}>
-                <Link to={'/home'}>home</Link>
+                <Link to={'/task'}>task</Link>
                 <Link to={'/announcements'}>announcements</Link>
-                <Link to={'/add'}>add</Link>    <Search/>
+                <hr/>
+                <Add/>
+                <hr/>
+                <Search/>
             </div>
 
             <hr/>
             <Switch>
-                <Route path={'/home'}>
-                    <Home/>
+                <Route path={'/task'}>
+                    <Task/>
                 </Route>
                 <Route path={'/announcements'}>
                     <Announcements/>
-                </Route>
-                <Route path={'/add'}>
-                    <Add/>
                 </Route>
                 <Route path={'/edit'}>
                     <Edit/>
