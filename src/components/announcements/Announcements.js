@@ -7,7 +7,14 @@ import Search from "../search/Search";
 export default  class Announcements extends Component {
 
     state = {
-        reports: [...reports]
+        reports: [...reports],
+        text: ''
+    }
+    editReport(id) {
+        let text = this.state.text
+        this.setState({
+            reports: this.state.reports.filter(report => report.id !== id )
+        });
     }
 
     deleteReport(id) {
@@ -23,7 +30,7 @@ export default  class Announcements extends Component {
                 <hr/>
                 <Search/>
                 {
-                    this.state.reports.map((report,index) => (<Announcement delete={this.deleteReport.bind(this, report.id)} report={report} key={index}/> ))
+                    this.state.reports.map((report,index) => (<Announcement edir={this.editReport.bind(this,report.id)} delete={this.deleteReport.bind(this, report.id)} report={report} key={index}/> ))
                 }
             </div>
         );

@@ -42,18 +42,15 @@ export default class Add extends Component {
             description: ${this.state.description}
             `);
 
+            let array = this.state.reports
+
             let newId = this.state.reports.length + 1;
-            // console.log(newId)
-            this.state.array.push({id:newId,title: this.state.title,description: this.state.description, date: new Date().toLocaleString()});
 
-
-            let newArray =  this.state.reports.concat( this.state.array);
-            console.log(newArray)
+            array.push({id:newId,title: this.state.title,description: this.state.description, date: new Date().toLocaleString()})
 
             this.setState({
-                status: newArray
+                reports: array
             })
-
 
         } else {
             console.error("FORM INVALID");

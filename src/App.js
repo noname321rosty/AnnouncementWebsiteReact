@@ -8,13 +8,13 @@ import Edit from "./components/edit/Edit";
 import Search from "./components/search/Search";
 
 function App() {
+
   return (
     <div>
         <Router>
             <div className={'wrap'}>
                 <Link to={'/task'}>task</Link>
                 <Link to={'/announcements'}>announcements</Link>
-
             </div>
 
             <hr/>
