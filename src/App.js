@@ -14,10 +14,7 @@ function App() {
             <div className={'wrap'}>
                 <Link to={'/task'}>task</Link>
                 <Link to={'/announcements'}>announcements</Link>
-                <hr/>
-                <Add/>
-                <hr/>
-                <Search/>
+
             </div>
 
             <hr/>

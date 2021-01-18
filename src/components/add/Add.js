@@ -28,12 +28,10 @@ export default class Add extends Component {
                 title: "",
                 description: "",
             },
-            reports: [...reports],
+            reports:[...reports],
             array:[]
         };
     }
-
-    status = reports;
 
     handleSubmit = e => {
         e.preventDefault();
@@ -44,17 +42,19 @@ export default class Add extends Component {
             description: ${this.state.description}
             `);
 
-            let newId = 1 + this.state.reports[reports.length-1].id;
+            let newId = this.state.reports.length + 1;
+            console.log(newId)
+            this.state.array.push({id:newId,title: this.state.title,description: this.state.description, date: new Date().toLocaleString()});
 
-            this.state.array.push(newId, this.state.title, this.state.description,new Date().toLocaleString());
-            console.log('Announcement is created');
-            console.log(this.state.array)
-            // this.state.reports.push( this.state.array);
+
+            let newArray =  this.state.reports.concat( this.state.array);
+            console.log(newArray)
+
             this.setState({
-                 status: this.state.reports.push( this.state.array)
-            });
+                status: newArray
+            })
 
-            console.log( this.state.reports)
+
         } else {
             console.error("FORM INVALID");
         }
