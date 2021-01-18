@@ -16,6 +16,7 @@ const formValid = ({ formErrors, ...rest }) => {
 };
 
 export default class Add extends Component {
+
     constructor(props) {
         super(props);
 
@@ -32,6 +33,8 @@ export default class Add extends Component {
         };
     }
 
+    status = reports
+
     handleSubmit = e => {
         e.preventDefault();
 
@@ -46,10 +49,12 @@ export default class Add extends Component {
             this.state.array.push(newId, this.state.title, this.state.description,new Date().toLocaleString());
             console.log('Announcement is created');
             console.log(this.state.array)
-            this.state.reports.push( this.state.array);
-            console.log( this.state.reports)
-            // rerender
+            // this.state.reports.push( this.state.array);
+            this.setState({
+                 status: this.state.reports.push( this.state.array)
+            });
 
+            console.log( this.state.reports)
         } else {
             console.error("FORM INVALID");
         }
