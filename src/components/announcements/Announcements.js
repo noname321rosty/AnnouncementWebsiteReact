@@ -26,10 +26,15 @@ export default  class Announcements extends Component {
     render() {
         return (
             <div>
+                {
+                    console.log(this.state.reports)
+                }
                 <Add/>
                 <hr/>
                 <Search/>
                 {
+
+
                     this.state.reports.map((report,index) => (<Announcement edir={this.editReport.bind(this,report.id)} delete={this.deleteReport.bind(this, report.id)} report={report} key={index}/> ))
                 }
             </div>

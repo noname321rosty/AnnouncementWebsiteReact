@@ -37,12 +37,12 @@ export default class Add extends Component {
         e.preventDefault();
 
         if (formValid(this.state)) {
-            console.log(`
-            title: ${this.state.title}
-            description: ${this.state.description}
-            `);
+            // console.log(`
+            // title: ${this.state.title}
+            // description: ${this.state.description}
+            // `);
 
-            let array = this.state.reports
+            let array = this.state.reports.slice()
 
             let newId = this.state.reports.length + 1;
 
@@ -51,6 +51,8 @@ export default class Add extends Component {
             this.setState({
                 reports: array
             })
+            console.log(this.state.reports)
+
 
         } else {
             console.error("FORM INVALID");

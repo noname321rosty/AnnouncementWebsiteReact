@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Announcement(props) {
+
     let {id, title, description, date} = props.report;
     return (
         <div>
