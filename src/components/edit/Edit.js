@@ -4,7 +4,7 @@ export default function Edit(props) {
     return (
         <div>
             {
-                <p>edit</p>
+                <button>edit</button>
             }
         </div>
     );

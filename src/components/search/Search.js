@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import {reports} from "../../database/database";
-import Announcement from "../announcement/Announcement";
 
 export default  class Search extends Component {
-    state = {
-        reports: [...reports],
-        title: '',
-        array: []
-    }
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            reports: [...reports],
+            title: '',
+            array: []
+        }
+
+    };
 
     checkTitle = (e) => {
         e.preventDefault();
@@ -35,8 +39,13 @@ export default  class Search extends Component {
                 <input value={this.state.title} onChange={this.checkTitle} type="text" placeholder={'search by title'}/>
                 <div>
                     {
-                        this.state.array.map((report , index) => <Announcement report={report} key={index}/>)
-
+                        this.state.array.map((report,index) => (
+                            <div key={index}>
+                            <h2>{report.title}</h2>
+                            <p>{report.description}</p>
+                            <p>{report.date}</p>
+                            </div>
+                        ))
                     }
                 </div>
             </div>

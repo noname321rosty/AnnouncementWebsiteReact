@@ -1,33 +1,26 @@
 import React from "react";
 import './App.css';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
 import Task from "./components/task/Task";
 import Announcements from "./components/announcements/Announcements";
-import Add from "./components/add/Add";
 import Edit from "./components/edit/Edit";
-import Search from "./components/search/Search";
+import Announcement from "./components/announcement/Announcement";
 
 function App() {
-
   return (
     <div>
         <Router>
             <div className={'wrap'}>
-                <Link to={'/task'}>task</Link>
-                <Link to={'/announcements'}>announcements</Link>
+                <NavLink to={'/task'}>task</NavLink>
+                <NavLink to={'/announcements'}>announcements</NavLink>
             </div>
 
             <hr/>
             <Switch>
-                <Route path={'/task'}>
-                    <Task/>
-                </Route>
-                <Route path={'/announcements'}>
-                    <Announcements/>
-                </Route>
-                <Route path={'/edit'}>
-                    <Edit/>
-                </Route>
+                <Route path={'/announcements/:id'} component={Announcement}/>
+                <Route path={'/announcements'} component={Announcements}/>
+                <Route path={'/task'} component={Task}/>
+                <Route path={'/edit'} component={Edit}/>
             </Switch>
         </Router>
     </div>

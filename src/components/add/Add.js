@@ -1,125 +1,70 @@
 import React, { Component } from "react";
 import {reports} from "../../database/database";
 
-const formValid = ({ formErrors, ...rest }) => {
-    let valid = true;
-
-    Object.values(formErrors).forEach(val => {
-        val.length > 0 && (valid = false);
-    });
-
-    Object.values(rest).forEach(val => {
-        val === null && (valid = false);
-    });
-
-    return valid;
-};
-
 export default class Add extends Component {
-
     constructor(props) {
         super(props);
-
         this.state = {
-            id: '',
-            title: '',
-            description: '',
-            formErrors: {
-                title: "",
-                description: "",
-            },
-            reports:[...reports],
-            array:[]
+            reports: [...reports],
+            text: this.props.text
         };
+
+
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
+    handleChange(e) {
+     this.setState({text: e.target.text});
+        console.log(this.props.text)
+    }
 
-        if (formValid(this.state)) {
-            // console.log(`
-            // title: ${this.state.title}
-            // description: ${this.state.description}
-            // `);
-
-            let array = this.state.reports.slice()
-
-            let newId = this.state.reports.length + 1;
-
-            array.push({id:newId,title: this.state.title,description: this.state.description, date: new Date().toLocaleString()})
-
-            this.setState({
-                reports: array
-            })
-            console.log(this.state.reports)
-
-
-        } else {
-            console.error("FORM INVALID");
+    addReport(report) {
+        if (report.length > 0) {
+            this.props.addReport(report);
+            this.setState({text: ''});
         }
-    };
-
-    handleChange = e => {
-        e.preventDefault();
-        const { name, value } = e.target;
-        let formErrors = { ...this.state.formErrors };
-
-        switch (name) {
-            case "title":
-                formErrors.title =
-                    value.length < 3 ? "minimum 3 characaters required" : "";
-                break;
-            case "description":
-                formErrors.description =
-                    value.length < 3 ? "minimum 3 characaters required" : "";
-                break;
-            default:
-                break;
-        }
-
-        this.setState({ formErrors, [name]: value }, () => console.log(this.state));
-    };
+    }
 
     render() {
-        const { formErrors } = this.state;
-
         return (
-            <div className="wrapper">
-                <div className="form-wrapper">
-                    <p>Add new Announcement</p>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="title">
-                            <input
-                                className={formErrors.title.length > 0 ? "error" : null}
-                                placeholder="title"
-                                type="text"
-                                name="title"
-                                onChange={this.handleChange}
-                            />
-                            <label htmlFor="title">title</label>
-                            {formErrors.title.length > 0 && (
-                                <span className="errorMessage">{formErrors.title}</span>
-                            )}
-                        </div>
-                        <div className="description">
-                            <input
-                                className={formErrors.description.length > 0 ? "error" : null}
-                                placeholder="description"
-                                type="text"
-                                name="description"
-                                onChange={this.handleChange}
-                            />
-                            <label htmlFor="description">description</label>
-                            {formErrors.description.length > 0 && (
-                                <span className="errorMessage">{formErrors.description}</span>
-                            )}
-                        </div>
-                        <div className="createAccount">
-                            <button type="submit">Create</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <div>
+                {
+                    console.log(this.props.text)
+                }
+                {/*<input type="text" value={this.state.name } onChange={this.handleChange} />*/}
+                <input type="text" value={this.state.text} onChange={this.handleChange.bind(this)} />
+                <button className="btn btn-primary" onClick={() => this.addReport.bind(this, this.state.text)}>Submit</button>
+           </div>
         );
     }
 }
+
+// constructor(props) {
+//     super(props);
+//     this.state = {value: this.props.todoText};
+//
+//     this.handleChange = this.handleChange.bind(this);
+//     this.addTodo = this.addTodo.bind(this);
+// }
+//
+// handleChange(e) {
+//     this.setState({value: e.target.value});
+// }
+//
+// addTodo(todo , name) {
+//
+//     if (todo.length > 0) {
+//         this.props.addTodo(todo);
+//         this.setState({value: ''});
+//     }
+// }
+//
+// render() {
+//     return (
+//         <div>
+//             <input type="text" value={this.state.value} onChange={this.handleChange} />
+//             <input type="text" value={this.state.name } onChange={this.handleChange} />
+//             <button className="btn btn-primary" onClick={() => this.addTodo(this.state.value)}>Submit</button>
+//         </div>
+//     );
+// }
+
