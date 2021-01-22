@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {reports} from "../../database/database";
-// import Announcement from "../announcement/Announcement";
 import Add from "../add/Add";
 import Search from "../search/Search";
 
@@ -69,7 +68,7 @@ export default  class Announcements extends Component {
                             <p>{report.description}</p>
                             <p>{report.date}</p>
                             <button onClick={this.deleteReport.bind(this, report.id)}>remove</button>
-                            {/*<button onClick={}>show more</button>*/}
+                            <button onClick={() => {this.props.history.push(`/announcements/${report.id}`)}}>show more</button>
                         </div>
 
                     ))

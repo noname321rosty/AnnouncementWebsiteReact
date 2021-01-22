@@ -8,22 +8,44 @@ export default class Announcement extends Component {
         super(props);
 
         this.state = {
-            reports: [...reports]
+            report: null,
+            reports:[...reports],
+            title:'',
+            description:'',
+            date:''
         }
     }
 
-    // componentDidMount() {
-    //     const {id} = this.props.id;
-    // }
+    componentDidMount() {
+        const id = this.props.match.params.id;
+        fetch('/announcements/' + id)
+            // .then(res => res.json())
+            .then(report => this.setState({report}))
+        this.state.reports.map(report => {
+           if (report.id === +id) {
+               const title = report.title;
+               const description = report.description
+               const date = report.date
+               this.setState({title, description, date})
+           }
+            return report;
+        })
+    };
 
     render() {
-       let {id , title , description , date} = this.props.report;
+        const {title ,description, date} = this.state;
         return (
             <div>
-                    <h2>{title}</h2>
-                    <p>{description}</p>
-                    <p>{date}</p>
-                    <Edit/>
+                {
+                    (
+                        <div>
+                            <h2>{title}</h2>
+                            <p>{description}</p>
+                            <p>{date}</p>
+                            <button onClick={() => {this.props.history.push('/announcements')}}>back</button>
+                        </div>
+                    )
+                }
             </div>
         );
     }
@@ -31,23 +53,8 @@ export default class Announcement extends Component {
 
 
 
-// export default function Announcement(props) {
-//     let {id, title, description, date} = props.report;
-//
-//     return (
-//         <div>
-//             {
-//                 <div>
-//                     <h2>{title}</h2>
-//                     <p>{description}</p>
-//                     <p>{date}</p>
-//                     <button onClick={props.delete}>remove</button>
-//                     <Edit/>
-//                 </div>
-//             }
-//         </div>
-//     );
-// }
+
+
 
 
 
