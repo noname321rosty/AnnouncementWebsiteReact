@@ -49,11 +49,6 @@ export default  class Announcements extends Component {
     render() {
         return (
             <div>
-                {
-                    console.log(this.state.reports)
-                }
-
-
                 <Add/>
                 <hr/>
                 <Search/>
@@ -68,7 +63,7 @@ export default  class Announcements extends Component {
                             <p>{report.description}</p>
                             <p>{report.date}</p>
                             <button onClick={this.deleteReport.bind(this, report.id)}>remove</button>
-                            <button onClick={() => {this.props.history.push(`/announcements/${report.id}`)}}>show more</button>
+                            <button onClick={() => {this.props.history.push(`/announcements/${report.id}`)}}>edit</button>
                         </div>
 
                     ))

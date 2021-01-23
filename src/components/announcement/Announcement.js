@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import Edit from "../edit/Edit";
 import {reports} from "../../database/database";
 
 export default class Announcement extends Component {
+
 
     constructor(props) {
         super(props);
@@ -12,7 +12,9 @@ export default class Announcement extends Component {
             reports:[...reports],
             title:'',
             description:'',
-            date:''
+            date:'',
+            textTitle:'',
+            textDescription:''
         }
     }
 
@@ -32,6 +34,36 @@ export default class Announcement extends Component {
         })
     };
 
+    handleTitle(e) {
+        console.log(e.target.value);
+        this.setState({
+            textTitle:e.target.value
+        })
+        console.log(this.state.textTitle)
+    };
+
+    handleDescription(e) {
+        console.log(e.target.value);
+        this.setState({
+            textDescription:e.target.value
+        })
+        console.log(this.state.textDescription)
+    };
+
+    changeReport() {
+
+        let {title , description} = this.state;
+        if ( title !== this.state.textTitle || description !== this.state.textDescription){
+                this.setState({
+                    title: this.state.textTitle,
+                    description: this.state.textDescription
+                })
+                console.log(this.state.reports);
+            } else {
+            console.log('you need to change smth');
+        }
+    };
+
     render() {
         const {title ,description, date} = this.state;
         return (
@@ -39,10 +71,11 @@ export default class Announcement extends Component {
                 {
                     (
                         <div>
-                            <h2>{title}</h2>
-                            <p>{description}</p>
+                            <h2>{title}</h2><input placeholder={title} type="text" onChange={this.handleTitle.bind(this)}/>
+                            <p>{description}</p><input placeholder={description} type="text" onChange={this.handleDescription.bind(this)}/>
                             <p>{date}</p>
                             <button onClick={() => {this.props.history.push('/announcements')}}>back</button>
+                            <button onClick={() => {this.changeReport()}}>change</button>
                         </div>
                     )
                 }
