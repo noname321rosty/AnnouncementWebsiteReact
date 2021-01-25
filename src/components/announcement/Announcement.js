@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {reports} from "../../database/database";
 
+import axios from 'axios';
+
 export default class Announcement extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +20,7 @@ export default class Announcement extends Component {
 
     componentDidMount() {
         const id = this.props.match.params.id;
-        fetch('/announcements/' + id)
+        axios('/announcements/' + id)
             // .then(res => res.json())
             .then(report => this.setState({report}))
         this.state.reports.map(report => {
