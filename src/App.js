@@ -20,7 +20,7 @@ function App() {
                 <Route path={'/announcements/:id'} component={Announcement}/>
                 <Route path={'/announcements'} component={Announcements}/>
                 <Route path={'/task'} component={Task}/>
-                <Route path={'/edit'} component={Edit}/>
+                {/*<Route path={'/edit'} component={Edit}/>*/}
                 <Redirect from='/' to='/task'/>
             </Switch>
         </Router>

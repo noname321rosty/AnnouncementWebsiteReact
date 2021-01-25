@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {reports} from "../../database/database";
 
 export default class Announcement extends Component {
-
-
     constructor(props) {
         super(props);
 
@@ -51,9 +49,8 @@ export default class Announcement extends Component {
     };
 
     changeReport() {
-
-        let {title , description} = this.state;
-        if ( title !== this.state.textTitle || description !== this.state.textDescription){
+        const {title , description} = this.state;
+        if ( title !== this.state.textTitle || title !== '' || description !== this.state.textDescription || description !== ''){
                 this.setState({
                     title: this.state.textTitle,
                     description: this.state.textDescription

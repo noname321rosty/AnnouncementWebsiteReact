@@ -12,39 +12,28 @@ export default  class Announcements extends Component {
             text: '',
             title: '',
             description: '',
-
+            array: []
         };
     }
 
-    // editReport(id) {
-    //
-    // }
+    addReport(newTitle, newDescription){
+        let reports = this.state.reports.slice();
+        let id = this.state.reports.length + 1;
 
-    addReport(title , description) {
-        let array = this.state.report.slice();
-
-        let newId = this.props.reports.length + 1;
-
-        array.push({
-            id: newId,
-            title: title,
-            description: description,
-            date: new Date().toLocaleString()
-        })
-
-        console.log(this.state.reports);
-        console.log(array);
+        reports.push({id: id,
+            title: newTitle,
+            description: newDescription,
+            date: new Date().toLocaleString()})
         this.setState({
-            reports: array
-        });
-
-    }
+            reports: this.state.reports.push(this.state.reports)
+        })
+    };
 
     deleteReport(id) {
         this.setState({
             reports: this.state.reports.filter(report => report.id !== id)
         })
-    }
+    };
 
     render() {
         return (
@@ -54,52 +43,17 @@ export default  class Announcements extends Component {
                 <Search/>
                 <hr/>
                 {
-
                     this.state.reports.map((report,index) => (
-
-                        <div  key={index}>
-                            {/*<p>{report.id}</p>*/}
+                        <div key={index}>
                             <h2>{report.title}</h2>
                             <p>{report.description}</p>
                             <p>{report.date}</p>
                             <button onClick={this.deleteReport.bind(this, report.id)}>remove</button>
                             <button onClick={() => {this.props.history.push(`/announcements/${report.id}`)}}>edit</button>
                         </div>
-
                     ))
                 }
             </div>
         );
     }
 }
-
-// constructor(props) {
-//     super(props);
-//     this.state = {value: this.props.todoText};
-//
-//     this.handleChange = this.handleChange.bind(this);
-//     this.addTodo = this.addTodo.bind(this);
-// }
-//
-// handleChange(e) {
-//     this.setState({value: e.target.value});
-// }
-//
-// addTodo(todo , name) {
-//
-//     if (todo.length > 0) {
-//         this.props.addTodo(todo);
-//         this.setState({value: ''});
-//     }
-// }
-//
-// render() {
-//     return (
-//         <div>
-//             <input type="text" value={this.state.value} onChange={this.handleChange} />
-//             <input type="text" value={this.state.name } onChange={this.handleChange} />
-//             <button className="btn btn-primary" onClick={() => this.addTodo(this.state.value)}>Submit</button>
-//         </div>
-//     );
-// }
-
