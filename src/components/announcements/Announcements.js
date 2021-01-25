@@ -4,7 +4,6 @@ import Add from "../add/Add";
 import Search from "../search/Search";
 
 export default  class Announcements extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -15,19 +14,6 @@ export default  class Announcements extends Component {
             array: []
         };
     }
-
-    addReport(newTitle, newDescription){
-        let reports = this.state.reports.slice();
-        let id = this.state.reports.length + 1;
-
-        reports.push({id: id,
-            title: newTitle,
-            description: newDescription,
-            date: new Date().toLocaleString()})
-        this.setState({
-            reports: this.state.reports.push(this.state.reports)
-        })
-    };
 
     deleteReport(id) {
         this.setState({

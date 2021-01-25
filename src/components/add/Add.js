@@ -35,10 +35,10 @@ export default class Add extends Component {
 
         if (newTitle !== '' || newDescription !== '') {
         array.push({
-                    id: id,
-                    title: newTitle,
-                    description: newDescription,
-                    date: new Date().toLocaleString()
+            id: id,
+            title: newTitle,
+            description: newDescription,
+            date: new Date().toLocaleString()
         });
 
         this.setState({
